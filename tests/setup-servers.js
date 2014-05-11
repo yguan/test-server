@@ -38,7 +38,7 @@ function createTargetServer() {
 
 function createTestServer() {
     testServer.createServer({
-        serverMode: serverMode.passive,
+        serverMode: serverMode.active,
         port: 9006,
         targetServerUrl: targetServerUrl,
         databaseDirectory: 'C:\\Users\\coding\\Documents\\GitHub\\test-server\\db-files\\'

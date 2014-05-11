@@ -20,5 +20,5 @@ function testPost() {
         });
 }
 
-testGet();
+//testGet();
 testPost();
