@@ -8,8 +8,15 @@ var restify = require('restify'),
 
 function createTargetServer() {
     function respond(req, res, next) {
+        console.log('actual server: respond is called');
         res.send('hello ' + req.params.name);
         next();
+    }
+
+    function send(req, res, next) {
+        console.log('actual server: send is called');
+        res.send(201, 'hello ' + req.params.name);
+        return next();
     }
 
     var server = restify.createServer({
@@ -22,12 +29,6 @@ function createTargetServer() {
 
     server.get('/hello/:name', respond);
     server.head('/hello/:name', respond);
-
-    function send(req, res, next) {
-        res.send(201, 'hello ' + req.params.name);
-        return next();
-    }
-
     server.post('/post', send);
 
     server.listen(targetServerPort, function () {
