@@ -174,3 +174,6 @@ built/
 
 # Angular JS
 **/bower_components/
+
+## Test Server database files
+db-files/
