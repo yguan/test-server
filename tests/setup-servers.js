@@ -1,7 +1,7 @@
 /*global require */
 
 var restify = require('restify'),
-    testServer = require('../lib/test-server'),
+    testServer = require('../lib/new-server'),
     serverMode = require('../lib/server-mode'),
     targetServerPort = 9005,
     targetServerUrl = 'http://localhost:' + targetServerPort;

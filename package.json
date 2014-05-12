@@ -13,6 +13,7 @@
     "dependencies": {
         "http-proxy": "1.1.2",
         "restify": "2.7.0",
+        "hoxy": "1.1.1",
         "nedb": "0.10.5"
     },
     "devDependencies": {
