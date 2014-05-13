@@ -1,20 +1,20 @@
 /*global require */
 
 var restify = require('restify'),
-    testServer = require('../lib/new-server'),
+    testServer = require('../lib/test-server'),
     serverMode = require('../lib/server-mode'),
-    targetServerPort = 9005,
-    targetServerUrl = 'http://localhost:' + targetServerPort;
+    serverConfig = require('./server-config');
 
+// Create the actual server that the test server acts as a proxy for.
 function createTargetServer() {
-    function respond(req, res, next) {
-        console.log('actual server: respond is called');
+    function getHandler(req, res, next) {
+        console.log('target server: get is called');
         res.send('hello ' + req.params.name);
         next();
     }
 
-    function send(req, res, next) {
-        console.log('actual server: send is called');
+    function postHandler(req, res, next) {
+        console.log('target server: post is called');
         res.send(201, 'hello ' + req.params.name);
         return next();
     }
@@ -27,23 +27,25 @@ function createTargetServer() {
     server.use(restify.queryParser());
     server.use(restify.bodyParser());
 
-    server.get('/hello/:name', respond);
-    server.head('/hello/:name', respond);
-    server.post('/post', send);
+    server.get('/hello/:name', getHandler);
+    server.head('/hello/:name', getHandler);
+    server.post('/post', postHandler);
 
-    server.listen(targetServerPort, function () {
+    server.listen(serverConfig.targetServer.port, function () {
         console.log('%s target server listening at %s', server.name, server.url);
     });
 }
 
+// Create the test server as a proxy to the actual server.
 function createTestServer() {
     testServer.createServer({
         serverMode: serverMode.active,
-        port: 9006,
-        targetServerUrl: targetServerUrl,
+        port: serverConfig.testServer.port,
+        targetServerUrl: serverConfig.targetServer.url,
         databaseDirectory: 'C:\\Users\\coding\\Documents\\GitHub\\test-server\\db-files\\'
     });
 }
+
 createTargetServer();
 createTestServer();
 
