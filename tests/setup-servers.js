@@ -2,7 +2,6 @@
 
 var restify = require('restify'),
     testServer = require('../lib/test-server'),
-    serverMode = require('../lib/server-mode'),
     serverConfig = require('./server-config');
 
 // Create the actual server that the test server acts as a proxy for.
@@ -39,7 +38,7 @@ function createTargetServer() {
 // Create the test server as a proxy to the actual server.
 function createTestServer() {
     testServer.createServer({
-        serverMode: serverMode.active,
+        serverMode: serverConfig.testServer.serverMode,
         port: serverConfig.testServer.port,
         targetServerUrl: serverConfig.targetServer.url,
         databaseDirectory: 'C:\\Users\\coding\\Documents\\GitHub\\test-server\\db-files\\'
