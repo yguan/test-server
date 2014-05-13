@@ -8,7 +8,7 @@ module.exports = {
         url: 'http://localhost:9005'
     },
     testServer: {
-        serverMode: serverMode.active,
+        serverMode: serverMode.passive,
         port: 9007,
         url: 'http://localhost:9007'
     }
