@@ -4,7 +4,7 @@ This repository contains the source code to a test server that allows you to int
 
 ## The Key Ideas Behind the Test Server
 
-You can find the details [here](http://yguan.github.io/repos/writings/).
+You can find the details [here](http://yguan.github.io/repos/writings/#test-automation?article=test-server).
 
 ## Development
 
