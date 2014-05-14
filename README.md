@@ -33,7 +33,7 @@ In your command line consoles, run the following steps:
 * Run `node run-client-tests.js` to start a http client that makes requests to the test server.
 * In the `setup-server` console, it shows the output from the test server and the fake real server.
 * In the `run-client-tests` console, it shows the responses from the test server.
-* The data cached by the test server is stored in `test-server\db-files`. The folder can be changed in `server.config.js`.
+* The data cached by the test server is stored as text files in `test-server\db-files`. The folder can be changed in `server.config.js`.
 
 ## License
 

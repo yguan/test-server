@@ -11,13 +11,11 @@
     "author": "Yong Guan",
 
     "dependencies": {
-        "http-proxy": "1.1.2",
-        "restify": "2.7.0",
         "hoxy": "1.1.1",
         "tingodb": "0.2.1"
     },
     "devDependencies": {
-        "http-proxy": "1.1.2",
+        "restify": "2.7.0",
         "unirest": "0.2.6"
     },
     "engines": {
