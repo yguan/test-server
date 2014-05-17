@@ -41,7 +41,13 @@ function createTestServer() {
         serverMode: serverConfig.testServer.serverMode,
         port: serverConfig.testServer.port,
         targetServerUrl: serverConfig.targetServer.url,
-        databaseDirectory: 'C:\\Users\\coding\\Documents\\GitHub\\test-server\\db-files\\'
+        databaseDirectory: 'C:\\Users\\coding\\Documents\\GitHub\\test-server\\db-files\\',
+        requestFilter: function (req, resp) {
+            if (req.url.indexOf('\/hello') === 0) {
+                return false; // Ignore the intercept request
+            }
+            return true; // Process the intercept request
+        }
     });
 }
 
